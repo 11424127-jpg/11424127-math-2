@@ -1,60 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Terminal Velocity</title>
-<style>
-body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-h1, h2 { color: #333; }
-.math { font-family: "Courier New", monospace; background: #f4f4f4; padding: 5px; display: inline-block; }
-</style>
+    <meta charset="UTF-8">
+    <title>工程數學：終端速度推導</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: auto; }
+        .highlight { background-color: #f4f4f4; padding: 15px; border-left: 5px solid #333; }
+    </style>
 </head>
 <body>
 
-<h1>Engineering Mathematics: Terminal Velocity of a Falling Object</h1>
+    <h2>Engineering Mathematics: Terminal Velocity of a Falling Object</h2>
+    
+    <h3>1. Modeling (Newton's Second Law)</h3>
+    <p>根據牛頓第二運動定律，考慮重力與空氣阻力：</p>
+    <div class="highlight">
+        \[ m \frac{dv}{dt} = mg - cv \]
+    </div>
 
-<h2>Problem</h2>
-<p>How does the velocity of an object change as it falls through air?</p>
+    <h3>2. Solving the Differential Equation</h3>
+    <p>使用分離變數法 (Separation of Variables)：</p>
+    \[ \frac{m}{mg - cv} dv = dt \]
+    
+    <p>兩邊同時積分：</p>
+    \[ \int \frac{m}{mg - cv} dv = \int dt \]
+    
+    <p>解得積分結果（考慮初始條件 \( v(0)=0 \)）：</p>
+    \[ -\frac{m}{c} \ln(mg - cv) = t + C \]
 
-<h2>Modeling (Newton’s Second Law)</h2>
-<p>Forces acting on the object:</p>
-<ul>
-<li>Gravity: mg</li>
-<li>Air resistance (drag): cv</li>
-</ul>
+    <h3>3. Final Velocity Formula</h3>
+    <p>最終求得物體隨時間變化的速度公式：</p>
+    <div class="highlight" style="color: #d9534f; font-weight: bold;">
+        \[ v(t) = \frac{mg}{c} \left( 1 - e^{-\frac{c}{m}t} \right) \]
+    </div>
 
-<p class="math">m dv/dt = mg - cv</p>
-
-<h2>Solving the Differential Equation</h2>
-
-<h3>1. Rewrite</h3>
-<p class="math">dv/dt = g - (c/m)v</p>
-
-<h3>2. Separate Variables</h3>
-<p class="math">dv / (g - (c/m)v) = dt</p>
-
-<h3>3. Integrate</h3>
-<p class="math">-(m/c) ln(g - (c/m)v) = t + C</p>
-
-<h3>4. Rearrange</h3>
-<p class="math">g - (c/m)v = Ae^(-(c/m)t)</p>
-
-<h3>5. Solve for v(t)</h3>
-<p class="math">v(t) = (mg/c)(1 - Ae^(-(c/m)t))</p>
-
-<h3>6. Initial Condition</h3>
-<p class="math">v(0) = 0 → A = 1</p>
-
-<h2>Final Answer</h2>
-<p class="math">v(t) = (mg/c)(1 - e^(-(c/m)t))</p>
-
-<h2>Physical Interpretation</h2>
-<ul>
-<li>As t → ∞, velocity approaches terminal velocity: v = mg/c</li>
-<li>Initially accelerates</li>
-<li>Acceleration decreases over time</li>
-<li>Eventually reaches constant speed</li>
-</ul>
+    <p>當 \( t \to \infty \) 時，物體達到終端速度：</p>
+    \[ v_{terminal} = \frac{mg}{c} \]
 
 </body>
 </html>

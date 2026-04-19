@@ -1,60 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Terminal Velocity</title>
-<style>
-body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-h1, h2 { color: #333; }
-.math { font-family: "Courier New", monospace; background: #f4f4f4; padding: 5px; display: inline-block; }
-</style>
-</head>
-<body>
+# Engineering Mathematics: Terminal Velocity Derivation
 
-<h1>Engineering Mathematics: Terminal Velocity of a Falling Object</h1>
+## 1. Problem Definition
+How does the velocity of an object change as it falls through a fluid? We consider gravity and a velocity-dependent drag force.
 
-<h2>Problem</h2>
-<p>How does the velocity of an object change as it falls through air?</p>
+## 2. Modeling (Newton's Second Law)
+The forces acting on the falling object are:
+* **Gravity (Downward)**: $F_g = mg$
+* **Air Resistance (Upward)**: $F_d = cv$
 
-<h2>Modeling (Newton’s Second Law)</h2>
-<p>Forces acting on the object:</p>
-<ul>
-<li>Gravity: mg</li>
-<li>Air resistance (drag): cv</li>
-</ul>
+According to Newton's Second Law ($F = ma$):
+$$m \frac{dv}{dt} = mg - cv$$
 
-<p class="math">m dv/dt = mg - cv</p>
+## 3. Step-by-Step Derivation
 
-<h2>Solving the Differential Equation</h2>
+### A. Separation of Variables
+Divide both sides by $(mg - cv)$ and multiply by $dt$:
+$$\frac{m}{mg - cv} dv = dt$$
 
-<h3>1. Rewrite</h3>
-<p class="math">dv/dt = g - (c/m)v</p>
+### B. Integration
+Integrate both sides from $t=0$ to $t$ (assuming $v(0)=0$):
+$$\int_{0}^{v} \frac{m}{mg - cv'} dv' = \int_{0}^{t} dt'$$
 
-<h3>2. Separate Variables</h3>
-<p class="math">dv / (g - (c/m)v) = dt</p>
+Using the substitution $u = mg - cv$, we get:
+$$-\frac{m}{c} \ln(mg - cv) \bigg|_{0}^{v} = t$$
 
-<h3>3. Integrate</h3>
-<p class="math">-(m/c) ln(g - (c/m)v) = t + C</p>
+### C. Solve for Velocity $v(t)$
+$$-\frac{m}{c} \left[ \ln(mg - cv) - \ln(mg) \right] = t$$
+$$\ln\left( \frac{mg - cv}{mg} \right) = -\frac{c}{m}t$$
+$$\frac{mg - cv}{mg} = e^{-\frac{c}{m}t}$$
 
-<h3>4. Rearrange</h3>
-<p class="math">g - (c/m)v = Ae^(-(c/m)t)</p>
+Final expression:
+$$v(t) = \frac{mg}{c} \left( 1 - e^{-\frac{c}{m}t} \right)$$
 
-<h3>5. Solve for v(t)</h3>
-<p class="math">v(t) = (mg/c)(1 - Ae^(-(c/m)t))</p>
 
-<h3>6. Initial Condition</h3>
-<p class="math">v(0) = 0 → A = 1</p>
 
-<h2>Final Answer</h2>
-<p class="math">v(t) = (mg/c)(1 - e^(-(c/m)t))</p>
+---
 
-<h2>Physical Interpretation</h2>
-<ul>
-<li>As t → ∞, velocity approaches terminal velocity: v = mg/c</li>
-<li>Initially accelerates</li>
-<li>Acceleration decreases over time</li>
-<li>Eventually reaches constant speed</li>
-</ul>
-
-</body>
-</html>
+## 4. Key Properties
+* **Initial Acceleration**: At $t=0$, $a = g$.
+* **Terminal Velocity**: As $t \to \infty$, $v = v_T = \frac{mg}{c}$.
+* **Time Constant**: The rate of reaching terminal velocity depends on the ratio $m/c$.

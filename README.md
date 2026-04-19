@@ -1,60 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Terminal Velocity</title>
-<style>
-body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
-h1, h2 { color: #333; }
-.math { font-family: "Courier New", monospace; background: #f4f4f4; padding: 5px; display: inline-block; }
-</style>
-</head>
-<body>
+# Engineering Mathematics: Terminal Velocity of a Falling Object
 
-<h1>Engineering Mathematics: Terminal Velocity of a Falling Object</h1>
+## Problem
+How does the velocity of an object change as it falls through air?
 
-<h2>Problem</h2>
-<p>How does the velocity of an object change as it falls through air?</p>
+## Modeling (Newton’s Second Law)
+Forces acting on the object:
+* **Gravity**: $mg$
+* **Air resistance (drag)**: $cv$
 
-<h2>Modeling (Newton’s Second Law)</h2>
-<p>Forces acting on the object:</p>
-<ul>
-<li>Gravity: mg</li>
-<li>Air resistance (drag): cv</li>
-</ul>
+Thus, the differential equation is:
+$$m \frac{dv}{dt} = mg - cv$$
 
-<p class="math">m dv/dt = mg - cv</p>
+## Solving the Differential Equation
 
-<h2>Solving the Differential Equation</h2>
+### 1. Rewrite
+$$\frac{dv}{dt} = g - \frac{c}{m}v$$
 
-<h3>1. Rewrite</h3>
-<p class="math">dv/dt = g - (c/m)v</p>
+### 2. Separate Variables
+$$\frac{dv}{g - \frac{c}{m}v} = dt$$
 
-<h3>2. Separate Variables</h3>
-<p class="math">dv / (g - (c/m)v) = dt</p>
+### 3. Integrate
+$$-\frac{m}{c} \ln\left(g - \frac{c}{m}v\right) = t + C$$
 
-<h3>3. Integrate</h3>
-<p class="math">-(m/c) ln(g - (c/m)v) = t + C</p>
+### 4. Rearrange
+$$g - \frac{c}{m}v = Ae^{-\frac{c}{m}t}$$
 
-<h3>4. Rearrange</h3>
-<p class="math">g - (c/m)v = Ae^(-(c/m)t)</p>
+### 5. Solve for $v(t)$
+$$v(t) = \frac{mg}{c}(1 - Ae^{-\frac{c}{m}t})$$
 
-<h3>5. Solve for v(t)</h3>
-<p class="math">v(t) = (mg/c)(1 - Ae^(-(c/m)t))</p>
+### 6. Initial Condition
+Assuming $v(0) = 0 \implies A = 1$
 
-<h3>6. Initial Condition</h3>
-<p class="math">v(0) = 0 → A = 1</p>
+## Final Answer
+$$v(t) = \frac{mg}{c}\left(1 - e^{-\frac{c}{m}t}\right)$$
 
-<h2>Final Answer</h2>
-<p class="math">v(t) = (mg/c)(1 - e^(-(c/m)t))</p>
-
-<h2>Physical Interpretation</h2>
-<ul>
-<li>As t → ∞, velocity approaches terminal velocity: v = mg/c</li>
-<li>Initially accelerates</li>
-<li>Acceleration decreases over time</li>
-<li>Eventually reaches constant speed</li>
-</ul>
-
-</body>
-</html>
+## Physical Interpretation
+* As $t \to \infty$, velocity approaches terminal velocity: $v_{terminal} = \frac{mg}{c}$
+* The object initially accelerates.
+* Acceleration decreases over time as air resistance increases.
+* Eventually, the object reaches a constant speed (Terminal Velocity).
